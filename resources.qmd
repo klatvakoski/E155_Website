@@ -1,4 +1,4 @@
 ---
 title: "Resources"
 ---
-Class Website: https://hmc-e155.github.io/
+Class Website: [Link](https://hmc-e155.github.io/)

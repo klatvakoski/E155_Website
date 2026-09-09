@@ -11,3 +11,6 @@ draft: false
 
 ## Reflection
 My goal in this class is to work towards a better understanding of microprocessors and the sensors that they countrol. I have concentrated my work at Mudd in biomedical research, projects, and classes, and I hope to apply microps to that area. Sensors are integral to the biomedical field and learning how to implement them with a microcontroller is something that I hope to do for my final project as well as further on in my career. 
+
+## Lab Report
+(Link)[lab1.qmd]
