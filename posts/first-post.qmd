@@ -1,0 +1,12 @@
+---
+title: "Hello Quarto"
+description: "Welcome to my Quarto portfolio"
+author: "Katie Latvakoski"
+date: "9/9/2026"
+categories:
+  - reflection
+  - labreport
+draft: false
+---
+
+a great lab report

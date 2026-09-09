@@ -1,0 +1,20 @@
+---
+title: "E155 Portfolio"
+image: images/linkedin2.jpg
+about: 
+    template: jolla
+    links: 
+        - icon: linkedin
+          text: LinkedIn
+          href: www.linkedin.com/in/katie-latvakoski-920224378
+        - icon: github
+          text: Github
+          href: https://github.com/klatvakoski
+
+---
+
+Katie is engineering student at HMC. She runs track and cross country and does school in her spare time. 
+
+This is a Quarto website.
+
+To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
