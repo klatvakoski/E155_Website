@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Katie Latvakoski">
+<meta name="dcterms.date" content="2026-09-09">
+<meta name="description" content="FPGA and MCU Verification">
 
-<title>E155 Blog – E155 Portfolio</title>
+<title>Lab 1 – E155 Portfolio</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -29,25 +32,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-172ba59bd5e0b52282274ba0c0cc16fc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-172ba59bd5e0b52282274ba0c0cc16fc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -75,67 +76,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -145,7 +88,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">E155 Portfolio</span>
     </a>
   </div>
@@ -156,19 +99,19 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./blog.html" aria-current="page"> 
+    <a class="nav-link" href="../../blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./resources.html"> 
+    <a class="nav-link" href="../../resources.html"> 
 <span class="menu-text">Resources</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./labs/"> 
+    <a class="nav-link" href="../../labs/"> 
 <span class="menu-text">Labs</span></a>
   </li>  
 </ul>
@@ -182,22 +125,50 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#hardware-specifications" id="toc-hardware-specifications" class="nav-link active" data-scroll-target="#hardware-specifications">Hardware Specifications</a></li>
+  <li><a href="#verilog-structure-and-style" id="toc-verilog-structure-and-style" class="nav-link" data-scroll-target="#verilog-structure-and-style">Verilog Structure and Style</a></li>
+  <li><a href="#simulations-and-waveforms" id="toc-simulations-and-waveforms" class="nav-link" data-scroll-target="#simulations-and-waveforms">Simulations and Waveforms</a></li>
+  <li><a href="#schematic-and-block-diagram-specs" id="toc-schematic-and-block-diagram-specs" class="nav-link" data-scroll-target="#schematic-and-block-diagram-specs">Schematic and Block Diagram Specs</a></li>
+  <li><a href="#calculations" id="toc-calculations" class="nav-link" data-scroll-target="#calculations">Calculations</a></li>
+  <li><a href="#ai-prototype" id="toc-ai-prototype" class="nav-link" data-scroll-target="#ai-prototype">AI Prototype</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">E155 Blog</h1>
+<h1 class="title">Lab 1</h1>
 </div>
 
+<div>
+  <div class="description">
+    FPGA and MCU Verification
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Katie Latvakoski </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 9, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -207,40 +178,99 @@ window.Quarto = {
 </header>
 
 
+<p>This report describes the FPGA and MCU Verifcation lab, lab 1. This lab took me ___ hours to complete. Future versions of this lab should look at what is necessary for completing the lab (i.e.&nbsp;if multiple Git tutorials, which are actually helpful), so as not to bombard the introduction to the lab with many extra tutorials that weren’t necessarily helpful to the lab.</p>
+<section id="hardware-specifications" class="level3">
+<h3 class="anchored" data-anchor-id="hardware-specifications">Hardware Specifications</h3>
+<p>The development board is fully assembled. It is able to display all sixteen hexadecimal numbers. The image below shows the digit F. The dipswitches are arranged for the seven-segment so that when all the switches are closest to the FPGA, the output on the seven-segment display is zero. The rightmost digit is bit 0 and the leftmost digit is bit 1.</p>
+<p>INSERT PIC OF the digit of SEVEN SEG</p>
+<p>The LEDs have the specified logic operations. The picture below shows the case where both LED 0 and 1 are on, LED 2 is blinking.</p>
+<p>INSERT PIC OF LEDS</p>
+The FPGA is coded with Verilog code through the use of modules.
+<details>
+<summary>
+Click to view top level module
+</summary>
+<img src="images/top_level_module.png" class="img-fluid">
+</details>
+</section>
+<section id="verilog-structure-and-style" class="level3">
+<h3 class="anchored" data-anchor-id="verilog-structure-and-style">Verilog Structure and Style</h3>
+<p>The FPGA was coded with three Verilog Modules. lab1_kl is the top-level module with assign statements for LED[1] and LED[0], led_blinker controls the blinking LED (LED[2]) through a counter, and display_led controls the seven-segment display connected to the board.</p>
+<details>
+<summary>
+Click to view lab1_kl
+</summary>
+<img src="images/top_level_module.png" class="img-fluid">
+</details>
+<details>
+<summary>
+Click to view led_blinker
+</summary>
+<img src="images/top_level_module.png" class="img-fluid">
+</details>
+<details>
+<summary>
+Click to view display_led
+</summary>
+<img src="images/top_level_module.png" class="img-fluid">
+</details>
+</section>
+<section id="simulations-and-waveforms" class="level3">
+<h3 class="anchored" data-anchor-id="simulations-and-waveforms">Simulations and Waveforms</h3>
+<p>Questa was used for simulations with testbenches for all modules.</p>
+<p>The first module is the main testbench. The waveform shows that the LEDs l and 2 are on when the correct s-signals are on.</p>
+<details>
+<summary>
+Click to view LED[1] and LED[0] waveforms
+</summary>
+<img src="lab1_testbenchMain.png" class="img-fluid">
+</details>
+<p>The second module is the blinker module. The two pictures below show the reset and counter resetting functionality.</p>
+<details>
+<summary>
+Click to view LED[2] waveforms
+</summary>
+<img src="lab1_counterResetting.png" class="img-fluid"> <img src="lab1_resetLed.png" class="img-fluid">
+</details>
+<p>The third module is the seven segment-module, which matches the 15 states that the DIP switch (controlled by s) can be in.</p>
+<details>
+<summary>
+Click to view seven-segment waveforms
+</summary>
+<img src="lab1_sevenseg_tb.png" class="img-fluid">
+</details>
+</section>
+<section id="schematic-and-block-diagram-specs" class="level3">
+<h3 class="anchored" data-anchor-id="schematic-and-block-diagram-specs">Schematic and Block Diagram Specs</h3>
+<details>
+<summary>
+Click to view LED Schematics – LED[2:0] and seven-segment LEDs.
+</summary>
+<img src="analog_schematics.png" class="img-fluid">
+</details>
+</section>
+<section id="calculations" class="level3">
+<h3 class="anchored" data-anchor-id="calculations">Calculations</h3>
+<details>
+<summary>
+Click to view resistor calculations.
+</summary>
+<img src="resistor_calculations.png" class="img-fluid">
+</details>
+<details>
+<summary>
+Click to view clock counter calculations
+</summary>
+<img src="frequency_calc.png" class="img-fluid">
+</details>
+</section>
+<section id="ai-prototype" class="level3">
+<h3 class="anchored" data-anchor-id="ai-prototype">AI Prototype</h3>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="cmVmbGVjdGlvbiUyQ2xhYnJlcG9ydA==" data-listing-date-sort="1788937200000" data-listing-file-modified-sort="1788988415788" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="80">
-<div class="thumbnail"><a href="./posts/first-post.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/first-post.html" class="no-external">Blog posts</a>
-</h3>
-<div class="delink listing-description"><a href="./posts/first-post.html" class="no-external">
-<p>E155 Writeups</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/first-post.html" class="no-external">
-<div class="listing-date">
-Sep 9, 2026
-</div>
-<div class="listing-author">
-Katie Latvakoski
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

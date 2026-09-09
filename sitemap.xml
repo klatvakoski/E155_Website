@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://klatvakoski.github.io/E155_Website/posts/first-post.html</loc>
-    <lastmod>2026-09-09T18:18:05.555Z</lastmod>
+    <loc>https://klatvakoski.github.io/E155_Website/resources.html</loc>
+    <lastmod>2026-09-09T19:17:19.338Z</lastmod>
+  </url>
+  <url>
+    <loc>https://klatvakoski.github.io/E155_Website/labs/lab1/index.html</loc>
+    <lastmod>2026-09-09T22:12:19.607Z</lastmod>
+  </url>
+  <url>
+    <loc>https://klatvakoski.github.io/E155_Website/index.html</loc>
+    <lastmod>2026-09-09T18:45:38.060Z</lastmod>
   </url>
   <url>
     <loc>https://klatvakoski.github.io/E155_Website/blog.html</loc>
     <lastmod>2026-09-09T18:18:05.528Z</lastmod>
   </url>
   <url>
-    <loc>https://klatvakoski.github.io/E155_Website/index.html</loc>
-    <lastmod>2026-09-09T18:18:05.552Z</lastmod>
+    <loc>https://klatvakoski.github.io/E155_Website/labs/index.html</loc>
+    <lastmod>2026-09-09T21:43:11.351Z</lastmod>
+  </url>
+  <url>
+    <loc>https://klatvakoski.github.io/E155_Website/posts/first-post.html</loc>
+    <lastmod>2026-09-09T21:13:35.788Z</lastmod>
   </url>
 </urlset>

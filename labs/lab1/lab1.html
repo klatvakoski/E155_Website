@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Katie Latvakoski">
+<meta name="dcterms.date" content="2026-09-09">
+<meta name="description" content="FPGA and MCU Verification">
 
-<title>About – E155 Portfolio</title>
+<title>Lab 1 – E155 Portfolio</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -29,23 +32,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-172ba59bd5e0b52282274ba0c0cc16fc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-172ba59bd5e0b52282274ba0c0cc16fc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -75,7 +78,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -85,7 +88,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">E155 Portfolio</span>
     </a>
   </div>
@@ -96,12 +99,20 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./about.html" aria-current="page"> 
-<span class="menu-text">About</span></a>
+    <a class="nav-link" href="../../blog.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../resources.html"> 
+<span class="menu-text">Resources</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../labs/labs.html"> 
+<span class="menu-text">Labs</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -114,22 +125,50 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#hardware-specifications" id="toc-hardware-specifications" class="nav-link active" data-scroll-target="#hardware-specifications">Hardware Specifications</a></li>
+  <li><a href="#verilog-structure-and-style" id="toc-verilog-structure-and-style" class="nav-link" data-scroll-target="#verilog-structure-and-style">Verilog Structure and Style</a></li>
+  <li><a href="#simulations-and-waveforms" id="toc-simulations-and-waveforms" class="nav-link" data-scroll-target="#simulations-and-waveforms">Simulations and Waveforms</a></li>
+  <li><a href="#schematic-and-block-diagram-specs" id="toc-schematic-and-block-diagram-specs" class="nav-link" data-scroll-target="#schematic-and-block-diagram-specs">Schematic and Block Diagram Specs</a></li>
+  <li><a href="#calculations" id="toc-calculations" class="nav-link" data-scroll-target="#calculations">Calculations</a></li>
+  <li><a href="#ai-prototype" id="toc-ai-prototype" class="nav-link" data-scroll-target="#ai-prototype">AI Prototype</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">About</h1>
+<h1 class="title">Lab 1</h1>
 </div>
 
+<div>
+  <div class="description">
+    FPGA and MCU Verification
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Katie Latvakoski </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 9, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -139,9 +178,58 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>About this site</p>
+<p>This report describes the FPGA and MCU Verifcation lab, lab 1. This lab took me ___ hours to complete. Future versions of this lab should look at what is necessary for completing the lab (i.e.&nbsp;if multiple Git tutorials, which are actually helpful), so as not to bombard the introduction to the lab with many extra tutorials that weren’t necessarily helpful to the lab.</p>
+<section id="hardware-specifications" class="level3">
+<h3 class="anchored" data-anchor-id="hardware-specifications">Hardware Specifications</h3>
+<p>The development board is fully assembled. It is able to display all sixteen hexadecimal numbers. The image below shows the digit F. The dipswitches are arranged for the seven-segment so that when all the switches are closest to the FPGA, the output on the seven-segment display is zero. The rightmost digit is bit 0 and the leftmost digit is bit 1.</p>
+<p>INSERT PIC OF the digit of SEVEN SEG</p>
+<p>The LEDs have the specified logic operations. The picture below shows the case where both LED 0 and 1 are on, LED 2 is blinking.</p>
+<p>INSERT PIC OF LEDS</p>
+The FPGA is coded with Verilog code through the use of modules.
+<details>
+<summary>
+Click to view top level module
+</summary>
+<img src="images/top_level_module.png" class="img-fluid">
+</details>
+</section>
+<section id="verilog-structure-and-style" class="level3">
+<h3 class="anchored" data-anchor-id="verilog-structure-and-style">Verilog Structure and Style</h3>
+<p>The FPGA was coded with three Verilog Modules. lab1_kl is the top-level module with assign statements for LED[1] and LED[0], led_blinker controls the blinking LED (LED[2]) through a counter, and display_led controls the seven-segment display connected to the board.</p>
+<details>
+<summary>
+Click to view lab1_kl
+</summary>
+<img src="images/top_level_module.png" class="img-fluid">
+</details>
+<details>
+<summary>
+Click to view led_blinker
+</summary>
+<img src="images/top_level_module.png" class="img-fluid">
+</details>
+<details>
+<summary>
+Click to view display_led
+</summary>
+<img src="images/top_level_module.png" class="img-fluid">
+</details>
+</section>
+<section id="simulations-and-waveforms" class="level3">
+<h3 class="anchored" data-anchor-id="simulations-and-waveforms">Simulations and Waveforms</h3>
+<p>Questa was used for simulations with testbenches for all</p>
+</section>
+<section id="schematic-and-block-diagram-specs" class="level3">
+<h3 class="anchored" data-anchor-id="schematic-and-block-diagram-specs">Schematic and Block Diagram Specs</h3>
+</section>
+<section id="calculations" class="level3">
+<h3 class="anchored" data-anchor-id="calculations">Calculations</h3>
+</section>
+<section id="ai-prototype" class="level3">
+<h3 class="anchored" data-anchor-id="ai-prototype">AI Prototype</h3>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

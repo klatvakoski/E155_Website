@@ -1,23 +1,93 @@
 [
   {
-    "objectID": "posts/first-post.html",
-    "href": "posts/first-post.html",
-    "title": "Hello Quarto",
+    "objectID": "resources.html",
+    "href": "resources.html",
+    "title": "Resources",
     "section": "",
-    "text": "a great lab report"
+    "text": "Class Website: Link"
   },
   {
-    "objectID": "blog.html",
-    "href": "blog.html",
-    "title": "E155 Blog",
+    "objectID": "labs/lab1/index.html",
+    "href": "labs/lab1/index.html",
+    "title": "Lab 1",
     "section": "",
-    "text": "Hello Quarto\n\n\nWelcome to my Quarto portfolio\n\n\n\n\n\nSep 9, 2026\n\n\nKatie Latvakoski\n\n\n\n\n\nNo matching items"
+    "text": "This report describes the FPGA and MCU Verifcation lab, lab 1. This lab took me ___ hours to complete. Future versions of this lab should look at what is necessary for completing the lab (i.e. if multiple Git tutorials, which are actually helpful), so as not to bombard the introduction to the lab with many extra tutorials that weren’t necessarily helpful to the lab.\n\nHardware Specifications\nThe development board is fully assembled. It is able to display all sixteen hexadecimal numbers. The image below shows the digit F. The dipswitches are arranged for the seven-segment so that when all the switches are closest to the FPGA, the output on the seven-segment display is zero. The rightmost digit is bit 0 and the leftmost digit is bit 1.\nINSERT PIC OF the digit of SEVEN SEG\nThe LEDs have the specified logic operations. The picture below shows the case where both LED 0 and 1 are on, LED 2 is blinking.\nINSERT PIC OF LEDS\nThe FPGA is coded with Verilog code through the use of modules.\n\n\nClick to view top level module\n\n\n\n\n\nVerilog Structure and Style\nThe FPGA was coded with three Verilog Modules. lab1_kl is the top-level module with assign statements for LED[1] and LED[0], led_blinker controls the blinking LED (LED[2]) through a counter, and display_led controls the seven-segment display connected to the board.\n\n\nClick to view lab1_kl\n\n\n\n\n\nClick to view led_blinker\n\n\n\n\n\nClick to view display_led\n\n\n\n\n\nSimulations and Waveforms\nQuesta was used for simulations with testbenches for all modules.\nThe first module is the main testbench. The waveform shows that the LEDs l and 2 are on when the correct s-signals are on.\n\n\nClick to view LED[1] and LED[0] waveforms\n\n\n\nThe second module is the blinker module. The two pictures below show the reset and counter resetting functionality.\n\n\nClick to view LED[2] waveforms\n\n \n\nThe third module is the seven segment-module, which matches the 15 states that the DIP switch (controlled by s) can be in.\n\n\nClick to view seven-segment waveforms\n\n\n\n\n\nSchematic and Block Diagram Specs\n\n\nClick to view LED Schematics – LED[2:0] and seven-segment LEDs.\n\n\n\n\n\nCalculations\n\n\nClick to view resistor calculations.\n\n\n\n\n\nClick to view clock counter calculations\n\n\n\n\n\nAI Prototype"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "E155 Portfolio",
     "section": "",
-    "text": "Katie is engineering student at HMC. She runs track and cross country and does school in her spare time.\nThis is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "Katie is engineering student at HMC, with a focus in biomedical engineering. She runs track and cross country for CMS (Claremont-Mudd-Scripps). In her spare time, she loves to hike, read, and pet dogs.\nThis is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+  },
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "E155 Blog",
+    "section": "",
+    "text": "Blog posts\n\n\nE155 Writeups\n\n\n\n\n\nSep 9, 2026\n\n\nKatie Latvakoski\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "labs/index.html#lab-2---multiplexed-7-segment-display",
+    "href": "labs/index.html#lab-2---multiplexed-7-segment-display",
+    "title": "Lab Page",
+    "section": "Lab 2 - Multiplexed 7-Segment Display",
+    "text": "Lab 2 - Multiplexed 7-Segment Display"
+  },
+  {
+    "objectID": "labs/index.html#lab-3---keypad-scanner",
+    "href": "labs/index.html#lab-3---keypad-scanner",
+    "title": "Lab Page",
+    "section": "Lab 3 - Keypad Scanner",
+    "text": "Lab 3 - Keypad Scanner"
+  },
+  {
+    "objectID": "labs/index.html#lab-4---digital-audio",
+    "href": "labs/index.html#lab-4---digital-audio",
+    "title": "Lab Page",
+    "section": "Lab 4 - Digital Audio",
+    "text": "Lab 4 - Digital Audio"
+  },
+  {
+    "objectID": "labs/index.html#lab-5---interrupts",
+    "href": "labs/index.html#lab-5---interrupts",
+    "title": "Lab Page",
+    "section": "Lab 5 - Interrupts",
+    "text": "Lab 5 - Interrupts"
+  },
+  {
+    "objectID": "labs/index.html#lab-6---the-internet-of-things-and-serial-peripheral-interface",
+    "href": "labs/index.html#lab-6---the-internet-of-things-and-serial-peripheral-interface",
+    "title": "Lab Page",
+    "section": "Lab 6 - The Internet of Things and Serial Peripheral Interface",
+    "text": "Lab 6 - The Internet of Things and Serial Peripheral Interface"
+  },
+  {
+    "objectID": "labs/index.html#lab-7---the-advanced-encryption-standard",
+    "href": "labs/index.html#lab-7---the-advanced-encryption-standard",
+    "title": "Lab Page",
+    "section": "Lab 7 - The Advanced Encryption Standard",
+    "text": "Lab 7 - The Advanced Encryption Standard"
+  },
+  {
+    "objectID": "posts/first-post.html",
+    "href": "posts/first-post.html",
+    "title": "Blog posts",
+    "section": "",
+    "text": "My goal in this class is to work towards a better understanding of microprocessors and the sensors that they countrol. I have concentrated my work at Mudd in biomedical research, projects, and classes, and I hope to apply microps to that area. Sensors are integral to the biomedical field and learning how to implement them with a microcontroller is something that I hope to do for my final project as well as further on in my career."
+  },
+  {
+    "objectID": "posts/first-post.html#reflection",
+    "href": "posts/first-post.html#reflection",
+    "title": "Blog posts",
+    "section": "",
+    "text": "My goal in this class is to work towards a better understanding of microprocessors and the sensors that they countrol. I have concentrated my work at Mudd in biomedical research, projects, and classes, and I hope to apply microps to that area. Sensors are integral to the biomedical field and learning how to implement them with a microcontroller is something that I hope to do for my final project as well as further on in my career."
+  },
+  {
+    "objectID": "posts/first-post.html#lab-report",
+    "href": "posts/first-post.html#lab-report",
+    "title": "Blog posts",
+    "section": "Lab Report",
+    "text": "Lab Report\n(Link)[lab1.qmd]"
   }
 ]
