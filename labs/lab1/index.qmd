@@ -1,0 +1,89 @@
+---
+title: "Lab 1"
+description: "FPGA and MCU Verification"
+author: "Katie Latvakoski"
+date: "9/9/2026"
+draft: false
+---
+
+This report describes the FPGA and MCU Verifcation lab, lab 1. This lab took me ___ hours to complete. Future versions of this lab should look at what is necessary for completing the lab (i.e. if multiple Git tutorials, which are actually helpful), so as not to bombard the introduction to the lab with many extra tutorials that weren't necessarily helpful to the lab. 
+
+### Hardware Specifications
+The development board is fully assembled. It is able to display all sixteen hexadecimal numbers. The image below shows the digit F. The dipswitches are arranged for the seven-segment so that when all the switches are closest to the FPGA, the output on the seven-segment display is zero. The rightmost digit is bit 0 and the leftmost digit is bit 1. 
+
+INSERT PIC OF the digit of SEVEN SEG
+
+The LEDs have the specified logic operations. The picture below shows the case where both LED 0 and 1 are on, LED 2 is blinking. 
+
+INSERT PIC OF LEDS 
+
+The FPGA is coded with Verilog code through the use of modules. 
+<details>
+<summary> Click to view top level module </summary>
+![](images/top_level_module.png)
+</details>
+
+### Verilog Structure and Style
+The FPGA was coded with three Verilog Modules. lab1_kl is the top-level module with assign statements for LED[1] and LED[0], led_blinker controls the blinking LED (LED[2]) through a counter, and display_led controls the seven-segment display connected to the board. 
+
+<details>
+<summary> Click to view lab1_kl </summary>
+![](images/top_level_module.png)
+</details>
+
+<details>
+<summary> Click to view led_blinker </summary>
+![](images/top_level_module.png)
+</details>
+
+<details>
+<summary> Click to view display_led </summary>
+![](images/top_level_module.png)
+</details>
+
+### Simulations and Waveforms 
+Questa was used for simulations with testbenches for all modules. 
+
+The first module is the main testbench. The waveform shows that the LEDs l and 2 are on when the correct s-signals are on. 
+
+<details>
+<summary> Click to view LED[1] and LED[0] waveforms </summary>
+![](lab1_testbenchMain.png)
+</details>
+
+The second module is the blinker module. The two pictures below show the reset and counter resetting functionality. 
+
+<details>
+<summary> Click to view LED[2] waveforms </summary>
+![](lab1_counterResetting.png)
+![](lab1_resetLed.png)
+</details>
+
+
+The third module is the seven segment-module, which matches the 15 states that the DIP switch (controlled by s) can be in. 
+
+<details>
+<summary> Click to view seven-segment waveforms </summary>
+![](lab1_sevenseg_tb.png)
+</details>
+
+### Schematic and Block Diagram Specs
+
+<details>
+<summary> Click to view LED Schematics -- LED[2:0] and seven-segment LEDs. </summary>
+![](analog_schematics.png)
+</details>
+
+### Calculations
+
+<details>
+<summary> Click to view resistor calculations. </summary>
+![](resistor_calculations.png)
+</details>
+
+<details>
+<summary> Click to view clock counter calculations </summary>
+![](frequency_calc.png)
+</details>
+
+### AI Prototype

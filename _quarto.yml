@@ -11,7 +11,7 @@ website:
         text: Blog
       - href: resources.qmd
         text: Resources
-      - href: labs\labs.qmd
+      - href: labs/
         text: Labs
 
 format:

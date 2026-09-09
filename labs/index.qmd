@@ -1,6 +1,12 @@
 ---
 title: "Lab Page"
 
+about: 
+    template: jolla
+    links:
+    - href: /labs/lab1/
+      text: Lab 1 Link
+
 ---
 ## Lab 1 - FPGA and MCU Setup and Testing
 ## Lab 2 - Multiplexed 7-Segment Display
