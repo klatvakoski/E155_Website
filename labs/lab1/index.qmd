@@ -13,8 +13,8 @@ The development board is fully assembled. It is able to display all sixteen hexa
 
 <details>
 <summary> Click to view top level module </summary>
-![](seg1.png)
-![](seg2.png)
+![](images/seg1.jpeg)
+![](images/seg2.jpeg)
 </details>
 
 
@@ -23,7 +23,7 @@ The LEDs have the specified logic operations. The picture below shows the case w
 
 <details>
 <summary> Click to view top level module </summary>
-![](leds.png)
+![](images/leds.jpeg)
 </details>
 
 The FPGA is coded with Verilog code through the use of modules. 
@@ -57,23 +57,23 @@ The first module is the main testbench. The waveform shows that the LEDs l and 2
 
 <details>
 <summary> Click to view LED[1] and LED[0] waveforms </summary>
-![](lab1_testbenchMain.png)
+![](images/lab1_testbenchMain.png)
 </details>
 
 The second module is the blinker module. The four figures below show the reset and counter resetting functionality. 
 
 <details>
 <summary> Click to view LED[2] waveforms </summary>
-![](lab1_counterResetting.png)
+![](images/lab1_resetEnable.png)
 Reset = 1, enable = 1, LED is on
 
-![](lab1_resetLed.png)
+![](images/lab1_resetEnableoff.png)
 Reset = 1, enable = 0, LED is off
 
-![](lab1_resetLed.png)
+![](images/lab1_reset0Enable1)
 Reset = 0, enable = 1, LED is off
 
-![](lab1_resetLed.png)
+![](images/lab1_reset0enable0)
 Reset = 0, enable = 0, LED is off
 </details>
 
@@ -82,33 +82,33 @@ The third module is the seven segment-module, which matches the 15 states that t
 
 <details>
 <summary> Click to view seven-segment waveforms </summary>
-![](lab1_sevenseg_tb.png)
+![](images/lab1_sevenseg_tb.png)
 </details>
 
 ### Schematic and Block Diagram Specs
 The first schematic shows how the seven-segment LED is powered and run from the Upduino. 
 <details>
 <summary> Click to view LED Schematics -- LED[2:0] and seven-segment LEDs. </summary>
-![](analog_schematics.png)
+![](images/analog_schematics.png)
 </details>
 
 The second schematic shows the different digital modules created inside of verilog. 
 <details>
 <summary> Click to view LED Schematics -- LED[2:0] and seven-segment LEDs. </summary>
-![](digital_schem.png)
+![](images/digital_schem.png)
 </details>
 
 ### Calculations
 The seven-segment led requires pulldown resistors connected to ground, which need to be calculated based on the amount of voltage that the LED takes and the desired current through the pin and LEDs. 
 <details>
 <summary> Click to view resistor calculations. </summary>
-![](resistor_calculations.png)
+![](images/resistor_calculations.png)
 </details>
 
 Additionally, in order to make a counter that took a 24MHz signal and take it down to a 2.4 Hz signal, calculations were neeed. 
 <details>
 <summary> Click to view clock counter calculations </summary>
-![](frequency_calc.png)
+![](images/frequency_calc.png)
 </details>
 
 ### AI Prototype
