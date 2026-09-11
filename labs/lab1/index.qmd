@@ -12,9 +12,12 @@ This report describes the FPGA and MCU Verifcation lab, lab 1. This lab took me 
 The development board is fully assembled. It is able to display all sixteen hexadecimal numbers. The image below shows the digit F. The dipswitches are arranged for the seven-segment so that when all the switches are closest to the FPGA, the output on the seven-segment display is zero. The rightmost digit is bit 0 and the leftmost digit is bit 1. 
 
 <details>
-<summary> Click to view top level module </summary>
+<summary> Click to view dipswitches and seven-segment display </summary>
 ![](images/seg1.jpeg)
+Dipswitches 
+
 ![](images/seg2.jpeg)
+Seven-segment display
 </details>
 
 
@@ -22,7 +25,7 @@ The development board is fully assembled. It is able to display all sixteen hexa
 The LEDs have the specified logic operations. The picture below shows the case where both LED 0 and 1 are on, LED 2 is blinking. 
 
 <details>
-<summary> Click to view top level module </summary>
+<summary> Click to view LEDs </summary>
 ![](images/leds.jpeg)
 </details>
 
@@ -112,3 +115,8 @@ Additionally, in order to make a counter that took a 24MHz signal and take it do
 </details>
 
 ### AI Prototype
+I used Gemini for my AI Prototype. After a input the initial code, there were three errors. First, one error was because there was no top-level specified module, which was my fault because this is something you need to set in Radiant rather than through the code. The second was that Gemini used an outdated version to reference the high-speed oscillator, which Radiant didn't recognize. Finally, in its configuration of the high-speed oscillator, the AI set the oscillator to 48 MHz when it said it was setting it to 12 MHz. Without having done this lab on my own, I might not have known that and I would've been confused as to why it didn't work. The AI did add some useful lines of code, however. Instead of parameterizing the module, it used local parameters to define the max count and the width. It also used the $clog2, which is a built-in function that calculates the minumum number of bits needed to make the argument of the function, which seems like it would be useful (see below).
+
+![](images/ai_code.png)
+
+If I were to use an LLM in my workflow further, I would ask it questions about errors and feed it the code that was causing the errors, because the LLM was able to address the errors when confronted about them. 
