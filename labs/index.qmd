@@ -4,7 +4,7 @@ title: "Lab Page"
 about: 
     template: jolla
     links:
-    - href: /labs/lab1/
+    - href: klatvakoski/github.io/E155_website/hmc-e155-portfolio/labs/lab1/
       text: Lab 1 Link
 
 ---
