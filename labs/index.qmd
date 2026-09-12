@@ -3,10 +3,6 @@ title: "Lab Page"
 
 about: 
     template: jolla
-    links:
-    - href: lab1/lab1.qmd
-      text: Lab 1 Link
-
 ---
 ## Lab 1 - [FPGA and MCU Setup and Testing](lab1/lab1.qmd)
 ## Lab 2 - Multiplexed 7-Segment Display
