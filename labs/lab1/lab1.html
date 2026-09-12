@@ -111,7 +111,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Resources</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../labs/labs.html"> 
+    <a class="nav-link" href="../../labs/"> 
 <span class="menu-text">Labs</span></a>
   </li>  
 </ul>
@@ -178,13 +178,24 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This report describes the FPGA and MCU Verifcation lab, lab 1. This lab took me ___ hours to complete. Future versions of this lab should look at what is necessary for completing the lab (i.e.&nbsp;if multiple Git tutorials, which are actually helpful), so as not to bombard the introduction to the lab with many extra tutorials that weren’t necessarily helpful to the lab.</p>
+<p>This report describes the FPGA and MCU Verifcation lab, lab 1. This lab took me about 32 hours to complete. Future versions of this lab should look at what is necessary for completing the lab (i.e.&nbsp;if multiple Git tutorials, which are actually helpful), so as to avoid overwhelming students with many extra tutorials that weren’t necessarily helpful to the current lab.</p>
 <section id="hardware-specifications" class="level3">
 <h3 class="anchored" data-anchor-id="hardware-specifications">Hardware Specifications</h3>
 <p>The development board is fully assembled. It is able to display all sixteen hexadecimal numbers. The image below shows the digit F. The dipswitches are arranged for the seven-segment so that when all the switches are closest to the FPGA, the output on the seven-segment display is zero. The rightmost digit is bit 0 and the leftmost digit is bit 1.</p>
-<p>INSERT PIC OF the digit of SEVEN SEG</p>
+<details>
+<summary>
+Click to view dipswitches and seven-segment display
+</summary>
+<p><img src="images/seg1.jpeg" class="img-fluid"> Dipswitches</p>
+<img src="images/seg2.jpeg" class="img-fluid"> Seven-segment display
+</details>
 <p>The LEDs have the specified logic operations. The picture below shows the case where both LED 0 and 1 are on, LED 2 is blinking.</p>
-<p>INSERT PIC OF LEDS</p>
+<details>
+<summary>
+Click to view LEDs
+</summary>
+<img src="images/leds.jpeg" class="img-fluid">
+</details>
 The FPGA is coded with Verilog code through the use of modules.
 <details>
 <summary>
@@ -217,16 +228,71 @@ Click to view display_led
 </section>
 <section id="simulations-and-waveforms" class="level3">
 <h3 class="anchored" data-anchor-id="simulations-and-waveforms">Simulations and Waveforms</h3>
-<p>Questa was used for simulations with testbenches for all</p>
+<p>Questa was used for simulations with testbenches for all modules.</p>
+<p>The first module is the main testbench. The waveform shows that the LEDs l and 2 are on when the correct s-signals are on.</p>
+<details>
+<summary>
+Click to view LED[1] and LED[0] waveforms
+</summary>
+<img src="images/lab1_testbenchMain.png" class="img-fluid">
+</details>
+<p>The second module is the blinker module. The four figures below show the reset and counter resetting functionality.</p>
+<details>
+<summary>
+Click to view LED[2] waveforms
+</summary>
+<p><img src="images/lab1_resetEnable.png" class="img-fluid"> Reset = 1, enable = 1, LED is on</p>
+<p><img src="images/lab1_resetEnableoff.png" class="img-fluid"> Reset = 1, enable = 0, LED is off</p>
+<p><img src="images/lab1_reset0Enable1.png" class="img-fluid"> Reset = 0, enable = 1, LED is off</p>
+<img src="images/lab1_reset0enable0.png" class="img-fluid"> Reset = 0, enable = 0, LED is off
+</details>
+<p>The third module is the seven segment-module, which matches the 15 states that the DIP switch (controlled by s) can be in.</p>
+<details>
+<summary>
+Click to view seven-segment waveforms
+</summary>
+<img src="images/lab1_sevenseg_tb.png" class="img-fluid">
+</details>
 </section>
 <section id="schematic-and-block-diagram-specs" class="level3">
 <h3 class="anchored" data-anchor-id="schematic-and-block-diagram-specs">Schematic and Block Diagram Specs</h3>
+The first schematic shows how the seven-segment LED is powered and run from the Upduino.
+<details>
+<summary>
+Click to view LED Schematics – LED[2:0] and seven-segment LEDs.
+</summary>
+<img src="images/analog_schematics.png" class="img-fluid">
+</details>
+The second schematic shows the different digital modules created inside of verilog.
+<details>
+<summary>
+Click to view LED Schematics – LED[2:0] and seven-segment LEDs.
+</summary>
+<img src="images/digital_schem.png" class="img-fluid">
+</details>
 </section>
 <section id="calculations" class="level3">
 <h3 class="anchored" data-anchor-id="calculations">Calculations</h3>
+The seven-segment led requires pulldown resistors connected to ground, which need to be calculated based on the amount of voltage that the LED takes and the desired current through the pin and LEDs.
+<details>
+<summary>
+Click to view resistor calculations.
+</summary>
+<img src="images/resistor_calculations.png" class="img-fluid">
+</details>
+Additionally, in order to make a counter that took a 24MHz signal and take it down to a 2.4 Hz signal, calculations were neeed.
+<details>
+<summary>
+Click to view clock counter calculations
+</summary>
+<img src="images/frequency_calc.png" class="img-fluid">
+</details>
 </section>
 <section id="ai-prototype" class="level3">
 <h3 class="anchored" data-anchor-id="ai-prototype">AI Prototype</h3>
+<p>I used Gemini for my AI Prototype. After a input the initial code, there were three errors. First, one error was because there was no top-level specified module, which was my fault because this is something you need to set in Radiant rather than through the code. The second was that Gemini used an outdated version to reference the high-speed oscillator, which Radiant didn’t recognize. Finally, in its configuration of the high-speed oscillator, the AI set the oscillator to 48 MHz when it said it was setting it to 12 MHz. Without having done this lab on my own, I might not have known that and I would’ve been confused as to why it didn’t work. The AI did add some useful lines of code, however. Instead of parameterizing the module, it used local parameters to define the max count and the width. It also used the $clog2, which is a built-in function that calculates the minumum number of bits needed to make the argument of the function, which seems like it would be useful (see below).</p>
+<p><img src="images/ai_code.png" class="img-fluid"></p>
+<p>If I were to use an LLM in my workflow further, I would ask it questions about errors and feed it the code that was causing the errors, because the LLM was able to address the errors when confronted about them.</p>
 
 
 </section>
@@ -305,7 +371,7 @@ Click to view display_led
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/klatvakoski\.github\.io\/E155_Website\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
