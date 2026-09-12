@@ -4,11 +4,11 @@ title: "Lab Page"
 about: 
     template: jolla
     links:
-    - href: labs/lab1/index.qmd
+    - href: labs/lab1/lab1.qmd
       text: Lab 1 Link
 
 ---
-## Lab 1 - [FPGA and MCU Setup and Testing](labs/lab1/index.qmd)
+## Lab 1 - [FPGA and MCU Setup and Testing](labs/lab1/lab1.qmd)
 ## Lab 2 - Multiplexed 7-Segment Display
 ## Lab 3 - Keypad Scanner
 ## Lab 4 - Digital Audio
