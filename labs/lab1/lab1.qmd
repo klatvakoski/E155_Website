@@ -44,12 +44,12 @@ The FPGA was coded with three Verilog Modules. lab1_kl is the top-level module w
 
 <details>
 <summary> Click to view led_blinker </summary>
-![](images/top_level_module.png)
+![](images/led_blinker_code.png)
 </details>
 
 <details>
 <summary> Click to view display_led </summary>
-![](images/top_level_module.png)
+![](images/display_led_code.png)
 </details>
 
 ### Simulations and Waveforms 
