@@ -99,7 +99,7 @@ The first block diagram is for the first project (double seven-segment LED).
 
 <details>
 <summary> Click to view the first block diagram </summary>
-![](images/digital_schem.png)
+![](images/seven_seg_bd.png)
 </details>
 
 The second block diagram displays the second project (the keypad).   
