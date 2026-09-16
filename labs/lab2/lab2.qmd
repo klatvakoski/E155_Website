@@ -10,36 +10,30 @@ This report describes a lab which uses one seven-segment SystemVerilog module to
 ### Hardware Specifications
 The FPGA pins are in series with resistors from Radiant, which are 100K. The scanning signals appear in each of the columns when the LEDs are pressed, working even when multiple buttons in the same column or the same row are pressed. 
 
-
-<details>
-<summary> Click to view dipswitches and seven-segment display </summary>
-![](images/seg1.jpeg)
-Dipswitches 
-
-![](images/seg2.jpeg)
-Seven-segment display
-</details>
-
-
 ### Verilog Structure and Style
 This lab was done in two separate LatticeRadiant build projects. The counter module uses the same code between projects, so it is only displayed once.
 The first project is the seven-segment decoder, which only includes a single seven-segment module that is time multiplexed. 
 
 <details>
 <summary> Click to view top-level seven-segment module </summary>
-![](images/top_level_module.png)
+![](images/7_seg_top.png)
 Includes: HSOSC, one seven-seg module, multiplexed counter module, and assign statments to implement multiplexing. 
 </details>
 
 <details>
 <summary> Click to view seven-seg module </summary>
-![](images/led_blinker_code.png)
+![](images/7_seg_display.png)
 This was used in Lab 1, with updates made to the code for Lab 2.
 </details>
 
 <details>
+<summary> Click to view the mux module </summary>
+![](images/mux.png)
+</details>
+
+<details>
 <summary> Click to view counter module </summary>
-![](images/display_led_code.png)
+![](images/counter.png)
 </details>
 
 
@@ -47,15 +41,16 @@ The second project is the keypad project which scans through the rows of the key
 
 <details>
 <summary> Click to view top-level keypad module </summary>
-![](images/top_level_module.png)
+![](images/keypad_top.png)
 Includes: scanning module (my module name: keypad), and assign statments to light up the LEDs based on the column outputs. 
 </details>
 
 <details>
-<summary> Click to view scannign module </summary>
-![](images/led_blinker_code.png)
+<summary> Click to view scanning module </summary>
+![](images/keypad_mod.png)
 Includes: counter and assign statements. The counter is resettable and enable-able, therefore, so is the scanning module.
 </details>
+
 
 ### Simulations and Waveforms 
 Questa was used for simulations with testbenches for all new modules. 
@@ -64,38 +59,38 @@ The first waveform is for the seven-segment LED showing the multiplexing functio
 
 <details>
 <summary> Click to view dip1, dip2, and chosen_dip waveforms </summary>
-![](images/lab1_testbenchMain.png)
+![](images/working_top_mod_7seg.png)
 </details>
 
 The second set of waveforms is for the scanning module. The first attacment demonstrates that the rows alternate, while the second two attachments display the reset and enable features. 
 
 <details>
 <summary> Click to view alternating row waveforms </summary>
-![](images/lab1_testbenchMain.png)
+![](images/keypad_rows.png)
 </details>
 
 <details>
 <summary> Click to view reset and enable features for the counting module in waveforms </summary>
-![](images/lab1_testbenchMain.png)
+![](images/keypad_reset.png)
 This is the reset feature. When reset is pressed, the row signal returns to its default state, jumping from 0100 to 0001. 
 
-![](images/lab1_testbenchMain.png)
+![](images/keypad_enable.png)
 This is the enable feature. When enable is pressed, the row signal holds the current signal it was at when enable was pressed until enable is let go. 
 </details>
 
 The final set of waveforms is from the top module of the keypad project. The following four attachments demonstrate the LED driving functionality of the top module. 
 <details>
 <summary> Click to view LED waveforms </summary>
-![](images/lab1_resetEnable.png)
+![](images/led0_on.png)
 LED[0] is on
 
-![](images/lab1_resetEnableoff.png)
+![](images/led1_on.png)
 LED[1] is on
 
-![](images/lab1_reset0Enable1)
+![](images/led2_on.png)
 LED[2] is on
 
-![](images/lab1_reset0enable0)
+![](images/led3_on.png)
 LED[3] is on
 </details>
 
@@ -103,14 +98,14 @@ LED[3] is on
 The first block diagram is for the first project (double seven-segment LED).  
 
 <details>
-<summary> Click to the first block diagram </summary>
+<summary> Click to view the first block diagram </summary>
 ![](images/digital_schem.png)
 </details>
 
 The second block diagram displays the second project (the keypad).   
 <details>
-<summary> Click to the first block diagram </summary>
-![](images/digital_schem.png)
+<summary> Click to view the first block diagram </summary>
+![](images/keypad_bd.png)
 </details>
 
 ### Calculations
@@ -118,12 +113,9 @@ The first schematic shows how the FPGA pins are in the reccomended operating ran
 
 <details>
 <summary> Click to view FPGA pin calculation </summary>
-![](images/analog_schematics.png)
+![](images/calculations.png)
 </details>
 
 ### AI Prototype
 
-
-![](images/ai_code.png)
-
-If I were to use an LLM in my workflow further... ? 
+My reflection on the outcome of this might be fairly standard. The output was better when given the extra file and info. Therefore, when coding using an LLM, it might be helpful to give it as much information as possible, so that it can work within your constraints better. I think the one downside of this is that it doesn't allow the LLM as much ingenuity. For example, if you specified a constraint of using combinational logic in a certain case, but the LLM actually has seen a use-case of something else that implements your desired design better, then you would probably want to see that. 

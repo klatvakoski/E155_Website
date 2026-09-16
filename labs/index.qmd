@@ -5,7 +5,7 @@ about:
     template: jolla
 ---
 ## Lab 1 - [FPGA and MCU Setup and Testing](lab1/lab1.qmd)
-## Lab 2 - Multiplexed 7-Segment Display
+## Lab 2 - [Multiplexed 7-Segment Display](lab2/lab2.qmd)
 ## Lab 3 - Keypad Scanner
 ## Lab 4 - Digital Audio
 ## Lab 5 - Interrupts
