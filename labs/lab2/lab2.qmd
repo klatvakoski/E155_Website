@@ -17,12 +17,14 @@ The first project is the seven-segment decoder, which only includes a single sev
 <details>
 <summary> Click to view top-level seven-segment module </summary>
 ![](images/7_seg_top.png)
+
 Includes: HSOSC, one seven-seg module, multiplexed counter module, and assign statments to implement multiplexing. 
 </details>
 
 <details>
 <summary> Click to view seven-seg module </summary>
 ![](images/7_seg_display.png)
+
 This was used in Lab 1, with updates made to the code for Lab 2.
 </details>
 
@@ -36,18 +38,19 @@ This was used in Lab 1, with updates made to the code for Lab 2.
 ![](images/counter.png)
 </details>
 
-
 The second project is the keypad project which scans through the rows of the keypad. 
 
 <details>
 <summary> Click to view top-level keypad module </summary>
 ![](images/keypad_top.png)
+
 Includes: scanning module (my module name: keypad), and assign statments to light up the LEDs based on the column outputs. 
 </details>
 
 <details>
 <summary> Click to view scanning module </summary>
 ![](images/keypad_mod.png)
+
 Includes: counter and assign statements. The counter is resettable and enable-able, therefore, so is the scanning module.
 </details>
 
@@ -72,13 +75,16 @@ The second set of waveforms is for the scanning module. The first attacment demo
 <details>
 <summary> Click to view reset and enable features for the counting module in waveforms </summary>
 ![](images/keypad_reset.png)
+
 This is the reset feature. When reset is pressed, the row signal returns to its default state, jumping from 0100 to 0001. 
 
 ![](images/keypad_enable.png)
+
 This is the enable feature. When enable is pressed, the row signal holds the current signal it was at when enable was pressed until enable is let go. 
 </details>
 
 The final set of waveforms is from the top module of the keypad project. The following four attachments demonstrate the LED driving functionality of the top module. 
+
 <details>
 <summary> Click to view LED waveforms </summary>
 ![](images/led0_on.png)
@@ -94,7 +100,7 @@ LED[2] is on
 LED[3] is on
 </details>
 
-### Block Diagram Specs
+### Block Diagram and Schematic Specs
 The first block diagram is for the first project (double seven-segment LED).  
 
 <details>
@@ -104,16 +110,42 @@ The first block diagram is for the first project (double seven-segment LED).
 
 The second block diagram displays the second project (the keypad).   
 <details>
-<summary> Click to view the first block diagram </summary>
+<summary> Click to view the second block diagram </summary>
 ![](images/keypad_bd.png)
+</details>
+
+
+The first schematic is for the first project (double seven-segment LED).  
+
+<details>
+<summary> Click to view the first block schematic </summary>
+![](images/7_seg_schematic.png)
+</details>
+
+The second schematic displays the second project (the keypad).   
+<details>
+<summary> Click to view the second block diagram </summary>
+![](images/keypad_schematic.png)
 </details>
 
 ### Calculations
 The first schematic shows how the FPGA pins are in the reccomended operating ranges (calculation done for the FPGA pin connected to the PNP transistor connected to the seven-segment LED).  
 
 <details>
-<summary> Click to view FPGA pin calculation </summary>
+<summary> Click to view FPGA pin calculation for the seven-segment diagram</summary>
 ![](images/calculations.png)
+PNP to anode turning on pin calculation.
+
+![](images/calculation_seven_seg.png)
+PNP to seven-segment LED pin calculation. 
+</details>
+
+
+<details>
+<summary> Click to view FPGA pin calculation for the seven-segment diagram</summary>
+![](images/calculation_keypad.png)
+PNP to keypad row pin.
+
 </details>
 
 ### AI Prototype
