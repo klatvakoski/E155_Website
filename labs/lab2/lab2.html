@@ -133,7 +133,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#hardware-specifications" id="toc-hardware-specifications" class="nav-link active" data-scroll-target="#hardware-specifications">Hardware Specifications</a></li>
   <li><a href="#verilog-structure-and-style" id="toc-verilog-structure-and-style" class="nav-link" data-scroll-target="#verilog-structure-and-style">Verilog Structure and Style</a></li>
   <li><a href="#simulations-and-waveforms" id="toc-simulations-and-waveforms" class="nav-link" data-scroll-target="#simulations-and-waveforms">Simulations and Waveforms</a></li>
-  <li><a href="#block-diagram-specs" id="toc-block-diagram-specs" class="nav-link" data-scroll-target="#block-diagram-specs">Block Diagram Specs</a></li>
+  <li><a href="#block-diagram-and-schematic-specs" id="toc-block-diagram-and-schematic-specs" class="nav-link" data-scroll-target="#block-diagram-and-schematic-specs">Block Diagram and Schematic Specs</a></li>
   <li><a href="#calculations" id="toc-calculations" class="nav-link" data-scroll-target="#calculations">Calculations</a></li>
   <li><a href="#ai-prototype" id="toc-ai-prototype" class="nav-link" data-scroll-target="#ai-prototype">AI Prototype</a></li>
   </ul>
@@ -265,8 +265,8 @@ Click to view LED waveforms
 <img src="images/led3_on.png" class="img-fluid"> LED[3] is on
 </details>
 </section>
-<section id="block-diagram-specs" class="level3">
-<h3 class="anchored" data-anchor-id="block-diagram-specs">Block Diagram Specs</h3>
+<section id="block-diagram-and-schematic-specs" class="level3">
+<h3 class="anchored" data-anchor-id="block-diagram-and-schematic-specs">Block Diagram and Schematic Specs</h3>
 <p>The first block diagram is for the first project (double seven-segment LED).</p>
 <details>
 <summary>
@@ -282,15 +282,37 @@ Click to view the second block diagram
 </summary>
 <img src="images/keypad_bd.png" class="img-fluid">
 </details>
+<p>The first schematic is for the first project (double seven-segment LED).</p>
+<details>
+<summary>
+Click to view the first block schematic
+</summary>
+<img src="images/7_seg_schematic.png" class="img-fluid">
+</details>
+The second schematic displays the second project (the keypad).<br>
+
+<details>
+<summary>
+Click to view the second block diagram
+</summary>
+<img src="images/keypad_schematic.png" class="img-fluid">
+</details>
 </section>
 <section id="calculations" class="level3">
 <h3 class="anchored" data-anchor-id="calculations">Calculations</h3>
 <p>The first schematic shows how the FPGA pins are in the reccomended operating ranges (calculation done for the FPGA pin connected to the PNP transistor connected to the seven-segment LED).</p>
 <details>
 <summary>
-Click to view FPGA pin calculation
+Click to view FPGA pin calculation for the seven-segment diagram
 </summary>
-<img src="images/calculations.png" class="img-fluid">
+<p><img src="images/calculations.png" class="img-fluid"> PNP to anode turning on pin calculation.</p>
+<img src="images/calculation_seven_seg.png" class="img-fluid"> PNP to seven-segment LED pin calculation.
+</details>
+<details>
+<summary>
+Click to view FPGA pin calculation for the seven-segment diagram
+</summary>
+<p><img src="images/calculation_keypad.png" class="img-fluid"> PNP to keypad row pin.</p>
 </details>
 </section>
 <section id="ai-prototype" class="level3">
