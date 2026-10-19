@@ -7,7 +7,7 @@ about:
 ## Lab 1 - [FPGA and MCU Setup and Testing](lab1/lab1.qmd)
 ## Lab 2 - [Multiplexed 7-Segment Display](lab2/lab2.qmd)
 ## Lab 3 - Keypad Scanner
-## Lab 4 - Digital Audio
+## Lab 4 - [Digital Audio](lab4/lab4.qmd)
 ## Lab 5 - Interrupts
 ## Lab 6 - The Internet of Things and Serial Peripheral Interface
 ## Lab 7 - The Advanced Encryption Standard
