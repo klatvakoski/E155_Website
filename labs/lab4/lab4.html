@@ -231,8 +231,15 @@ Click to view an example of the structured register access for Timer 6
 <p>The maxcount is computed as integer division, so any decimal portion will be truncated. This is so that the timer only counts in whole numbers, meaning that it wouldn’t be able to reach the maxcount value if it had decimal numbers in it. Unfortunately, this does produce some error in outputed wave, which is calculated. For example, when the timer is asked to produce a 220 Hz signal, it will have some error: <span class="math display">\[
 \text{maxcount} = \frac{1 \mathrm{ MHz}}{220 \mathrm{ Hz}} \\
                         = 4545.455 \\
-\]</span> Truncated, this gives maxcount = 4545. We can then find the wave this produces by dividing 1 MHz by the 4545, and finding the true frequency of the wave that’s being output. Once that’s done, the error can be found taking the absolute value of the difference between the expected wave frequency and the real wave frequency, all divided by the expected wave frequency: $$ f_{} = \ = 220.022 \</p>
-<p> = *100% \ = 0.01 % \ $$ This error can be found for each note that is played in Fur Elise. These can be found in the following <a href="https://docs.google.com/spreadsheets/d/1LlO74CX2zvYxKUV85WB15bZL7Il-8ns_/edit?usp=sharing&amp;ouid=103245042396860123175&amp;rtpof=true&amp;sd=true">spreadsheet</a>. All of the errors are highlighted in green, as they have less than 1% error. It is not enough to check that 220 and 1000 Hz have a less than 1% error, because there are values that are higher than 1000 Hz that might cause more error because it is a higher divisor.</p>
+\]</span> Truncated, this gives maxcount = 4545. We can then find the wave this produces by dividing 1 MHz by the 4545, and finding the true frequency of the wave that’s being output. Once that’s done, the error can be found taking the absolute value of the difference between the expected wave frequency and the real wave frequency, all divided by the expected wave frequency: <span class="math display">\[
+f_{\mathrm{real}} = \frac{1 \mathrm{ MHz}}{4545} \\
+                            = 220.022 \mathrm{Hz} \\
+\]</span></p>
+<p><span class="math display">\[
+\text{percent error} = \frac{220.022 \mathrm{Hz} - 220 \mathrm{Hz}}{220 \mathrm{Hz}}*100\% \\
+                         = 0.01 \% \\
+\]</span></p>
+<p>This error can be found for each note that is played in Fur Elise. These can be found in the following <a href="https://docs.google.com/spreadsheets/d/1LlO74CX2zvYxKUV85WB15bZL7Il-8ns_/edit?usp=sharing&amp;ouid=103245042396860123175&amp;rtpof=true&amp;sd=true">spreadsheet</a>. All of the errors are highlighted in green, as they have less than 1% error. It is not enough to check that 220 and 1000 Hz have a less than 1% error, because there are values that are higher than 1000 Hz that might cause more error because it is a higher divisor.</p>
 <p>The minimum producible frequency is anything between 0 and 1 Hz. This would cause a number that is higher than the highest number that the timer can count to (1,000,000), which would cause the output frequency to be incorrect. The maximum produceable frequency within 1% error is 10,001 Hz, which can be found with this MATLAB code:</p>
 <pre><code>    %setup: 
     frequencies = (1:1:1000000); % frequencies to test
