@@ -1,0 +1,117 @@
+---
+title: "Lab 4"
+description: "Music Player"
+author: "Katie Latvakoski"
+date: "10/18/2026"
+---
+
+This report describes a lab which uses the STM32L432KC MCU  timers to play music given a matrix structure of notes and the number of milliseconds that the notes are played for. This lab took me about 24 hours to complete.    
+
+### Hardware Specifications
+The setup can play a set of musical notes with rests at the correct pitches and for the correct amount of time. It utilizes the 3362P 10K potentiomter to control the volume of the speaker that outputs the music and an LM386 audio amplifier to limit the amount of current that the speaker pulls from the MCU. 
+
+### Software and Microcontroller Design
+This lab uses two timers, timer 6 and timer 7 with custom header files to access all of the registers from memory using structures. An example of the structured register access is included below. All other code can be found in my [lab 4 GitHub repository](https://github.com/klatvakoski/katie_speaker_lab4).  
+
+<details>
+<summary> Click to view an example of the structured register access for Timer 6 </summary>
+![](images/tim6_reg_structs.png) 
+
+</details>
+
+### Timer functionality 
+#### Timer 6
+Timer 6 was used to produce a wave at a specific frequency. This wave was output directly to pin, PB6, which then input that signal into the LM386 audio amplifier, and subsequently the speaker. Timer 6 is driven by the MSI oscillator at 4 MHz, and configured using the PSC prescaler to drive it at 1 MHz. A max-count value is determined for each desired frequency using the following equation:
+$"Max count" = (1 "MHz")/f_des$
+
+<details>
+<summary> Click to view dip1, dip2, and chosen_dip waveforms </summary>
+![](images/working_top_mod_7seg.png)
+</details>
+
+The second set of waveforms is for the scanning module. The first attacment demonstrates that the rows alternate, while the second two attachments display the reset and enable features. 
+
+<details>
+<summary> Click to view alternating row waveforms </summary>
+![](images/keypad_rows.png)
+</details>
+
+<details>
+<summary> Click to view reset and enable features for the counting module in waveforms </summary>
+![](images/keypad_reset.png)
+
+This is the reset feature. When reset is pressed, the row signal returns to its default state, jumping from 0100 to 0001. 
+
+![](images/keypad_enable.png)
+
+This is the enable feature. When enable is pressed, the row signal holds the current signal it was at when enable was pressed until enable is let go. 
+</details>
+
+The final set of waveforms is from the top module of the keypad project. The following four attachments demonstrate the LED driving functionality of the top module. 
+
+<details>
+<summary> Click to view LED waveforms </summary>
+![](images/led0_on.png)
+LED[0] is on
+
+![](images/led1_on.png)
+LED[1] is on
+
+![](images/led2_on.png)
+LED[2] is on
+
+![](images/led3_on.png)
+LED[3] is on
+</details>
+
+### Block Diagram and Schematic Specs
+The first block diagram is for the first project (double seven-segment LED).  
+
+<details>
+<summary> Click to view the first block diagram </summary>
+![](images/seven_seg_bd.png)
+</details>
+
+The second block diagram displays the second project (the keypad).   
+<details>
+<summary> Click to view the second block diagram </summary>
+![](images/keypad_bd.png)
+</details>
+
+
+The first schematic is for the first project (double seven-segment LED).  
+
+<details>
+<summary> Click to view the first block schematic </summary>
+![](images/7_seg_schematic.png)
+</details>
+
+The second schematic displays the second project (the keypad).   
+<details>
+<summary> Click to view the second block diagram </summary>
+![](images/keypad_schematic.png)
+</details>
+
+### Calculations
+The first schematic shows how the FPGA pins are in the reccomended operating ranges (calculation done for the FPGA pin connected to the PNP transistor connected to the seven-segment LED).  
+
+<details>
+<summary> Click to view FPGA pin calculation for the seven-segment diagram</summary>
+![](images/calculations.png)
+PNP to anode turning on pin calculation.
+
+![](images/calculation_seven_seg.png)
+PNP to seven-segment LED pin calculation. 
+</details>
+
+
+<details>
+<summary> Click to view FPGA pin calculation for the seven-segment diagram</summary>
+![](images/calculation_keypad.png)
+PNP to keypad row pin.
+
+</details>
+
+### AI Prototype
+
+My reflection on the outcome of this might be fairly standard. The output was better when given the extra file and info. Therefore, when coding using an LLM, it might be helpful to give it as much information as possible, so that it can work within your constraints better. I think the one downside of this is that it doesn't allow the LLM as much ingenuity. For example, if you specified a constraint of using combinational logic in a certain case, but the LLM actually has seen a use-case of something else that implements your desired design better, then you would probably want to see that. 
