@@ -161,9 +161,7 @@ window.Quarto = {
   <ul>
   <li><a href="#hardware" id="toc-hardware" class="nav-link active" data-scroll-target="#hardware">Hardware</a></li>
   <li><a href="#software" id="toc-software" class="nav-link" data-scroll-target="#software">Software</a></li>
-  <li><a href="#simulations-and-waveforms" id="toc-simulations-and-waveforms" class="nav-link" data-scroll-target="#simulations-and-waveforms">Simulations and Waveforms</a></li>
-  <li><a href="#schematic-and-block-diagram-specs" id="toc-schematic-and-block-diagram-specs" class="nav-link" data-scroll-target="#schematic-and-block-diagram-specs">Schematic and Block Diagram Specs</a></li>
-  <li><a href="#calculations" id="toc-calculations" class="nav-link" data-scroll-target="#calculations">Calculations</a></li>
+  <li><a href="#schematic" id="toc-schematic" class="nav-link" data-scroll-target="#schematic">Schematic</a></li>
   <li><a href="#ai-prototype" id="toc-ai-prototype" class="nav-link" data-scroll-target="#ai-prototype">AI Prototype</a></li>
   </ul>
 </nav>
@@ -210,8 +208,9 @@ window.Quarto = {
 <p>This report contains Lab 5, which uses interrupts to find the direction and revolutions per second of a 25GA-370 motor with a gear ratio of -34. This lab took me about 18 hours to complete. Future versions of this lab could consider including a more clear example of a flowchart diagram for C-code, as the current link is somewhat confusing.</p>
 <section id="hardware" class="level3">
 <h3 class="anchored" data-anchor-id="hardware">Hardware</h3>
-<p>The motor uses an attached encoder which has six wires: quad encoder B-signal, quad encoder A-signal, quad cnoder +5V vcc, quad encoder ground, negative power terminal, and positive power terminal. As explained in the lab description on the <a href="https://hmc-e155.github.io/lab/lab5/">E155 website</a>, the quad encoder places a patterned disk on the motor with two alternating patterns (see Figure 1). Then, two sensors that are placed on encoder. The first sensor (connected to the A-signal) goes high when one of the colors passes it and low when the next color passes it. The second sensor (connected to the B-signal) works the same way, but is located clockwise from the first sensor such that the wave from the B-signal is 90 degrees out of phase from the A-signal wave. Thus, the motor speed and direction can be measured. Using both the A and B signals allows the MCU to run correctly at high and low speeds.</p>
+<p>The motor uses an attached <a href="https://hmc-e155.github.io/assets/lab/25GA370.pdf">encoder</a> which has six wires: quad encoder B-signal, quad encoder A-signal, quad encoder +5V vcc, quad encoder ground, negative power terminal, and positive power terminal. As explained in the lab description on the <a href="https://hmc-e155.github.io/lab/lab5/">E155 website</a>, the quad encoder places a patterned disk on the motor with two alternating patterns (see Figure 1). Then, two sensors that are placed on encoder. The first sensor (connected to the A-signal) goes high when one of the colors passes it and low when the next color passes it. The second sensor (connected to the B-signal) works the same way, but is located clockwise from the first sensor such that the wave from the B-signal is 90 degrees out of phase from the A-signal wave. Thus, the motor speed and direction can be measured. Using both the A and B signals allows the MCU to run correctly at high and low speeds.</p>
 <p><img src="images/quad_encoder.png" title="Figure 1: Quad Encoder; image taken from a GIF on the E155 website Lab 5 description" class="img-fluid"></p>
+<p><em>Figure 1: Quad Encoder; image taken from a GIF on the E155 website Lab 5 description</em></p>
 </section>
 <section id="software" class="level3">
 <h3 class="anchored" data-anchor-id="software">Software</h3>
@@ -220,94 +219,52 @@ window.Quarto = {
 <summary>
 Click to view the main while loop
 </summary>
-<img src="images/main_while_loop.png" title="Figure 2: Main while loop" class="img-fluid">
+<p><img src="images/main_while_loop.png" title="Figure 2: Main while loop" class="img-fluid"></p>
+<em>Figure 2: Main while loop</em>
 </details>
 <details>
 <summary>
 Click to view the A-signal interrupt
 </summary>
-<img src="images/a_interrupt.png" title="Figure 3: A-signal interrupt" class="img-fluid">
+<p><img src="images/a_interrupt.png" title="Figure 3: A-signal interrupt" class="img-fluid"></p>
+<em>Figure 3: A-signal interrupt</em>
 </details>
 <details>
 <summary>
 Click to view the B-signal interrupt
 </summary>
-<img src="images/b_interrupt.png" title="Figure 4: B-signal interrupt" class="img-fluid">
+<p><img src="images/b_interrupt.png" title="Figure 4: B-signal interrupt" class="img-fluid"></p>
+<em>Figure 4: B-signal interrupt</em>
 </details>
 <p>This code works by using the global variable “count” to keep track of the number of pulses from A and B that happen in a second. The main while loop has a timer that runs for a second. After that second, count is held in a new variable, called count_latch and count is reset to zero again. count_latch is now the number of pulses per second. Pulses per second, P<sub>s</sub>, can be divided by P<sub>r</sub>, the known number of pulses per revolution for this motor, which is is 408 pulses/rev, in order to get N, the number of revolutions in a second.</p>
 <p><span class="math display">\[
 N = \frac{P_s}{P_r} \\
+    \\
     = \frac{P_s}{408 \text{ pulses/rev}} \\
 \]</span></p>
-<p>In order to determine direction, count is added to when the motion is clockwise and subtracted from when the motion is counterclockwise. The direction is determined by the values of the A and B signals as well as the interrupt. The interrupts are enabled for both the rising and falling edges of the A-signal and the B-signal. On those edges, we know certain things about the level of each signal. When the motion is clockwise, the A-signal is somewhat ahead of the B-signal, so we know that when we get an interrupt from A, A is high, and B is low, which we can check in the software (this is seen in Figure 3). Alternatively, we know that when we have counterclockwise motion,</p>
+<p>In order to determine direction, the variable count gets added to when the motion is clockwise and subtracted from when the motion is counterclockwise. The direction is determined by the values of the A and B signals as well as the interrupt. The interrupts are enabled for both the rising and falling edges of the A-signal and the B-signal. On those edges, we know certain things about the level of each signal. When the motion is clockwise, the A-signal is somewhat ahead of the B-signal (Figure 5a). Therefore, we know that clockwise motion occurs when we get an interrupt from A, A is high, and B is low, or when we get an interrupt from B, B is high, and A is high. Alternatively, we know that when we have counterclockwise motion, the B-signal is somewhat ahead of the A-signal (Figure 5b). Thus, counterclockwise motion occurs when we get an interrupt from A, A is high, and B is high, or we we get an interrupt from B, A is low, and B is high. Using this setup, we can accurately get the rpm of the motor.</p>
+<p><img src="images/clockwise.png" title="Figure 5a: Clockwise Motion" class="img-fluid"></p>
+<p><em>Figure 5a: Clockwise Motion</em></p>
+<p><img src="images/counterclockwise.png" title="Figure 5b: B-signal interrupt" class="img-fluid"></p>
+<p><em>Figure 5b: B-signal interrupt</em></p>
+<p>The flowchart below shown in Figure 6 describes how these interrupts interact with the main loop:<br>
+<img src="images/flow_chart.png" title="Figure 6: Flowchart" class="img-fluid"></p>
+<p><em>Figure 6: Flowchart</em></p>
 </section>
-<section id="simulations-and-waveforms" class="level3">
-<h3 class="anchored" data-anchor-id="simulations-and-waveforms">Simulations and Waveforms</h3>
-<p>Questa was used for simulations with testbenches for all modules.</p>
-<p>The first module is the main testbench. The waveform shows that the LEDs l and 2 are on when the correct s-signals are on.</p>
+<section id="schematic" class="level3">
+<h3 class="anchored" data-anchor-id="schematic">Schematic</h3>
+Figure 7 shows how the motor is powered and run from the MCU and the power supply.
 <details>
 <summary>
-Click to view LED[1] and LED[0] waveforms
+Click to view the motor schematic
 </summary>
-<img src="images/lab1_testbenchMain.png" class="img-fluid">
-</details>
-<p>The second module is the blinker module. The four figures below show the reset and counter resetting functionality.</p>
-<details>
-<summary>
-Click to view LED[2] waveforms
-</summary>
-<p><img src="images/lab1_resetEnable.png" class="img-fluid"> Reset = 1, enable = 1, LED is on</p>
-<p><img src="images/lab1_resetEnableoff.png" class="img-fluid"> Reset = 1, enable = 0, LED is off</p>
-<p><img src="images/lab1_reset0Enable1.png" class="img-fluid"> Reset = 0, enable = 1, LED is off</p>
-<img src="images/lab1_reset0enable0.png" class="img-fluid"> Reset = 0, enable = 0, LED is off
-</details>
-<p>The third module is the seven segment-module, which matches the 15 states that the DIP switch (controlled by s) can be in.</p>
-<details>
-<summary>
-Click to view seven-segment waveforms
-</summary>
-<img src="images/lab1_sevenseg_tb.png" class="img-fluid">
-</details>
-</section>
-<section id="schematic-and-block-diagram-specs" class="level3">
-<h3 class="anchored" data-anchor-id="schematic-and-block-diagram-specs">Schematic and Block Diagram Specs</h3>
-The first schematic shows how the seven-segment LED is powered and run from the Upduino.
-<details>
-<summary>
-Click to view LED Schematics – LED[2:0] and seven-segment LEDs.
-</summary>
-<img src="images/analog_schematics.png" class="img-fluid">
-</details>
-The second schematic shows the different digital modules created inside of verilog.
-<details>
-<summary>
-Click to view LED Schematics – LED[2:0] and seven-segment LEDs.
-</summary>
-<img src="images/digital_schem.png" class="img-fluid">
-</details>
-</section>
-<section id="calculations" class="level3">
-<h3 class="anchored" data-anchor-id="calculations">Calculations</h3>
-The seven-segment led requires pulldown resistors connected to ground, which need to be calculated based on the amount of voltage that the LED takes and the desired current through the pin and LEDs.
-<details>
-<summary>
-Click to view resistor calculations.
-</summary>
-<img src="images/resistor_calculations.png" class="img-fluid">
-</details>
-Additionally, in order to make a counter that took a 24MHz signal and take it down to a 2.4 Hz signal, calculations were neeed.
-<details>
-<summary>
-Click to view clock counter calculations
-</summary>
-<img src="images/frequency_calc.png" class="img-fluid">
+<p><img src="images/schematic.png" title="Figure 7: Motor Schematic" class="img-fluid"></p>
+<em>Figure 7: Motor Schematic</em>
 </details>
 </section>
 <section id="ai-prototype" class="level3">
 <h3 class="anchored" data-anchor-id="ai-prototype">AI Prototype</h3>
-<p>I used Gemini for my AI Prototype. After a input the initial code, there were three errors. First, one error was because there was no top-level specified module, which was my fault because this is something you need to set in Radiant rather than through the code. The second was that Gemini used an outdated version to reference the high-speed oscillator, which Radiant didn’t recognize. Finally, in its configuration of the high-speed oscillator, the AI set the oscillator to 48 MHz when it said it was setting it to 12 MHz. Without having done this lab on my own, I might not have known that and I would’ve been confused as to why it didn’t work. The AI did add some useful lines of code, however. Instead of parameterizing the module, it used local parameters to define the max count and the width. It also used the $clog2, which is a built-in function that calculates the minumum number of bits needed to make the argument of the function, which seems like it would be useful (see below).</p>
-<p><img src="images/ai_code.png" class="img-fluid"></p>
-<p>If I were to use an LLM in my workflow further, I would ask it questions about errors and feed it the code that was causing the errors, because the LLM was able to address the errors when confronted about them.</p>
+<p>I used Gemini for my AI Prototype. My initial prompt got me two results: First, it recommended using a hardware encoder mode on Timer 2. It specifically stated that this would work better than EXTI GPIO pin inputs because parsing the signals comes directly from hardware. This would likely work, but doesn’t work with my main code loop. Then, it gave another example, which did use EXTI input pins, but also added a lot of extra code that I didn’t want (e.g.&nbsp;adding an encoder table and finding distance between the two quad encoder points A and B). After prompting it to remove the unnecessary code and to program it as it would program it if it were using Segger (instead of the Hal-framework), it gave me code that was very similar to my own. This code compiled, did collect interrupts correctly, and it would’ve saved me time if I used it.</p>
 
 
 </section>
